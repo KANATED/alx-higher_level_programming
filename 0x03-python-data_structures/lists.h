@@ -18,6 +18,7 @@ typedef struct listint_s
 
 /* Function prototypes */
 void print_list_integer(listint_t *list);
+int def element_at(my_list, idx)
 int element_at(listint_t *list, int index);
 listint_t *replace_in_list(listint_t *list, int index, int new_value);
 void print_reversed_list_integer(listint_t *list);
