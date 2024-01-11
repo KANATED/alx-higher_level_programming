@@ -1,14 +1,19 @@
 #!/usr/bin/python3
-# The above line specifies the interpreter to be used when executing the script
 
-import sys  # Import the sys module to access command-line arguments
+if __name__ == "__main__":
+    """Handle basic arithmetic operations."""
+    from calculator_1 import add, sub, mul, div
+    import sys
 
-# Retrieve the number of arguments using len(sys.argv)
-num_args = len(sys.argv) - 1  # Subtracting 1 to exclude the script name
+    if len(sys.argv) - 1 != 3:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        sys.exit(1)
 
-# Print the number of arguments
-print("{:d} argument{}{}".format(num_args, 's' if num_args != 1 else '', ':' if num_args > 0 else '.'))
+    ops = {"+": add, "-": sub, "*": mul, "/": div}
+    if sys.argv[2] not in list(ops.keys()):
+        print("Unknown operator. Available operators: +, -, * and /")
+        sys.exit(1)
 
-# Print each argument along with its position (starting at 1)
-for i, arg in enumerate(sys.argv[1:], start=1):
-    print("{:d}: {}".format(i, arg))
+    a = int(sys.argv[1])
+    b = int(sys.argv[3])
+    print("{} {} {} = {}".format(a, sys.argv[2], b, ops[sys.argv[2]](a, b)))
